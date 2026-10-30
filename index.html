@@ -329,7 +329,8 @@ EXTRA_STAGES.forEach(([name,deco],i)=>{const p=DECO_PAL[deco],t=TINTS[i%TINTS.le
   .forEach(([name,deco,top,bot])=>THEMES.push({name,deco,top,bot,star:1}));
  [['新生星雲','space'],['原初之海','sea'],['創世沙原','desert'],['光子都市','city'],['晶化冰原','ice'],['生命之森','forest'],['方舟船塢','station'],['曙光星環','space'],['彩虹群島','sea'],['黃金神殿','desert'],
   ['天空之城','city'],['永恆冰晶','ice'],['世界之樹','forest'],['星艦工廠','station'],['銀河漩渦','space'],['潮汐神域','sea'],['太陽熔爐','desert'],['霓光天都','city'],['冰晶王座','ice'],['翡翠聖林','forest'],
-  ['中樞要塞','station'],['超弦空間','space'],['深淵聖海','sea'],['終焉沙暴','desert'],['機械神都','city'],['極寒深淵','ice'],['混沌之森','forest'],['無限迴廊','station'],['萬星之門','space'],['創世之光・終','space']]
+  ['中樞要塞','station'],['超弦空間','space'],['深淵聖海','sea'],['終焉沙暴','desert'],['機械神都','city'],['極寒深淵','ice'],['混沌之森','forest'],['無限迴廊','station'],['萬星之門','space'],['創世之光・極','space'],
+  ['破曉海峽','sea'],['永晝沙原','desert'],['星河都市','city'],['蒼穹冰峰','ice'],['神木秘境','forest'],['宇宙方舟','station'],['銀河王座','space'],['時之海','sea'],['天穹聖城','city'],['無盡星海・終','space']]
   .forEach(([name,deco],i)=>{const p=DECO_PAL[deco],t=hslHex((i*53+200)%360,55,30);THEMES.push({name,deco,top:mix(p[0],t,.45),bot:mix(p[1],t,.3),star:deco==='space'||deco==='station'?1:.3});});}
 const LAST=THEMES.length;
 const CHAP=50;
@@ -348,6 +349,7 @@ SV.unlock=clamp(SV.unlock|0,1,LAST);SV.sel=clamp(SV.sel|0||SV.unlock,1,SV.unlock
 if((SV.clears||0)>0&&SV.unlock===100)SV.unlock=101;
 if((SV.clears||0)>0&&SV.unlock===600)SV.unlock=601;
 if((SV.clears||0)>0&&SV.unlock===610)SV.unlock=611;
+if((SV.clears||0)>0&&SV.unlock===640)SV.unlock=641;
 let UNLOCK=SV.unlock,HI=SV.hi;
 function saveSV(){SV.unlock=UNLOCK;SV.hi=HI;try{localStorage.setItem(SAVE_KEY,JSON.stringify(SV))}catch(e){}}
 
@@ -994,7 +996,7 @@ const ARCH2=[
      if(t%90===45)for(const s of[-1,1])eShot(b.x+s*80,b.y,PI/2+s*.7,2.2,{home:100,r:6,c:'#ff9f3a'});}}},
 ];
 const GENS=['','·改','·極','·真','·神','·終'];
-const BOSSES=BNAMES.map((name,i)=>{const fin=i===LAST-1||i===609,lm=(i+1)%10===0,li=fin?9:((i+1)/10|0)-1,a=lm?ARCH2[li%10]:ARCH[i%5],gen=fin?0:lm?(li/10|0):0,tier=i/5|0,ex=[];if(lm)name=fin?(i===LAST-1?'創世神皇':'萬象終焉神皇'):a.name+(GENS[gen]||'·Ω');
+const BOSSES=BNAMES.map((name,i)=>{const fin=i===LAST-1||i===609||i===639,lm=(i+1)%10===0,li=fin?9:((i+1)/10|0)-1,a=lm?ARCH2[li%10]:ARCH[i%5],gen=fin?0:lm?(li/10|0):0,tier=i/5|0,ex=[];if(lm)name=fin?(i===LAST-1?'無盡星海神帝':i===639?'創世神皇':'萬象終焉神皇'):a.name+(GENS[gen]||'·Ω');
   if(i>=20)ex.push((i*7)%6);if(i>=45){const e2=(i*5+3)%6;if(e2!==ex[0])ex.push(e2);}
   return Object.assign({},a,{name,col:lm?(gen?mix(a.col,BCOLS[i],.18*gen):a.col):BCOLS[i],shape:lm?5+li%10:i%5,tier,ex,hp:Math.round(a.hp*(1+i*0.06))});});
 
