@@ -9,6 +9,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
 <style>
+@supports not selector(::-webkit-scrollbar){*{scrollbar-width:thin;scrollbar-color:#ffb43a rgba(10,16,40,.55)}}
+::-webkit-scrollbar{width:8px;height:8px}
+::-webkit-scrollbar-track{background:rgba(10,16,40,.55);border-radius:8px}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#ffd36a,#ff8a1e);border-radius:8px;border:2px solid rgba(10,16,40,.55)}
+::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,#ffe08f,#ffa040)}
+::-webkit-scrollbar-button{display:none;width:0;height:0}
+::-webkit-scrollbar-corner{background:transparent}
+
 :root{
   --bg:#070a1c; --panel:rgba(8,12,34,.9); --fg:#eef3ff; --muted:#93a0c6;
   --amber:#ffb02e; --zh:"PingFang TC","Microsoft JhengHei","Noto Sans TC",system-ui,sans-serif; --cyan:#39d0ff; --red:#ff3d5a;
@@ -121,7 +129,7 @@ details.hp b{color:#ffb02e}
 .sic{font-size:28px;width:40px;text-align:center}.sin{flex:1;min-width:0}.sin b{color:#fff;font:700 14px var(--zh)}.sin small{display:block;color:#93a0c6;font:11.5px/1.45 var(--zh)}
 .spc.gold .btn{background:linear-gradient(180deg,#ffe08a,#ffb02e)}.spc.mine .btn{background:linear-gradient(180deg,#9ff4ff,#2aa8e0);color:#04203a}
 .chap{display:flex;justify-content:space-between;align-items:baseline;margin:2px 2px 6px;font-family:var(--zh)}.chap b{color:#ffcf5a;font-size:14px}.chap span{color:#8fa0d0;font-size:12px}
-.chips{display:flex;gap:4px;overflow-x:auto;margin-bottom:8px;padding-bottom:4px;scrollbar-width:thin}
+.chips{display:flex;gap:4px;overflow-x:auto;margin-bottom:8px;padding-bottom:4px}
 .chips button{flex:none;font:11px "Russo One",sans-serif;padding:6px 8px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.05);color:#a8b4d8;cursor:pointer}
 .chips button.on{background:#ffcf5a;color:#2a1100;border-color:#ffcf5a}.chips button:disabled{opacity:.3;cursor:default}
 .grid button{font-size:10.5px}
